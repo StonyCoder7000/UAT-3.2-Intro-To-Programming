@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Input Validation</title>
+    <style>
+        body {
+            background-image: url('purplematrix.gif'); /* Set the background image */
+            background-size: cover; /* Make it cover the entire screen */
+            background-attachment: fixed; /* Fix the background image in place */
+            background-repeat: no-repeat; /* Prevent image from repeating */
+            color: #00FF00; /* Matrix green text color */
+            font-family: "Matrix Code NFI", monospace; /* Matrix-style font */
+        }
+        /* Add your additional styling here */
+    </style>
+</head>
+<body>
+    <!-- Your Name: John Doe -->
+    <!-- Matrix-themed styling applied to this HTML page -->
+
+    <h1>Welcome to the Matrix</h1>
+    <p>Please provide your information to access the secret message:</p>
+
+    <!-- Create a form for user input -->
+    <form id="userInputForm">
+        <!-- Input for first name -->
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required>
+        <br>
+
+        <!-- Input for last name -->
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required>
+        <br>
+
+        <!-- Input for zip code -->
+        <label for "zipCode">Zip Code:</label>
+        <input type="text" id="zipCode" required>
+        <br>
+
+        <!-- Submit button -->
+        <input type="submit" value="Access Secret Message">
+    </form>
+
+    <!-- Display area for the secret message -->
+    <div id="secretMessage" style="display: none;">
+        <h2>Secret Message:</h2>
+        <p>This is the secret message from the Matrix.</p>
+        <!-- Add any creative elements here -->
+    </div>
+
+    <!-- JavaScript for input validation -->
+    <script>
+        // Add comments explaining your JavaScript code
+        document.getElementById("userInputForm").addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent form submission
+
+            // Get user input values
+            var firstName = document.getElementById("firstName").value;
+            var lastName = document.getElementById("lastName").value;
+            var zipCode = document.getElementById("zipCode").value;
+
+            // Combine first name and last name
+            var fullName = firstName + " " + lastName;
+
+            // Check if fullName has more than 20 characters
+            if (fullName.length > 20) {
+                alert("Full name should have 20 characters or less.");
+                return;
+            }
+
+            // Check if zip code is valid (exactly 5 digits)
+            if (/^\d{5}$/.test(zipCode) === false) {
+                alert("Please enter a valid 5-digit zip code.");
+                return;
+            }
+
+            // If inputs are valid, display the secret message
+            document.getElementById("secretMessage").style.display = "block";
+        });
+    </script>
+</body>
+</html>
